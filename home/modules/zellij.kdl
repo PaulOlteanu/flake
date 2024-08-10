@@ -1,0 +1,59 @@
+pane_frames false
+scroll_buffer_size 50000
+copy_on_select false
+copy_command "wl-copy"
+
+themes {
+    onedark {
+        fg 171 178 191
+        // bg 40 44 52
+        bg 60 64 72
+        black 29 32 37
+        red 190 80 70
+        green 152 195 121
+        yellow 229 192 123
+        blue 97 175 239
+        magenta 198 120 221
+        cyan 86 182 194
+        white 204 204 204
+        orange 209 154 102
+    }
+}
+theme "onedark"
+
+
+keybinds {
+	shared {
+		// unbind "Ctrl C"
+		// bind "Ctrl C" { Copy; }
+		bind "Alt 1" { GoToTab 1; }
+		bind "Alt 2" { GoToTab 2; }
+		bind "Alt 3" { GoToTab 3; }
+		bind "Alt 4" { GoToTab 4; }
+		bind "Alt 5" { GoToTab 5; }
+		bind "Alt 6" { GoToTab 6; }
+		bind "Alt 7" { GoToTab 7; }
+		bind "Alt 8" { GoToTab 8; }
+		// bind "Ctrl 9" { GoToTab 1; }
+
+		// bind "Ctrl T" { NewTab; }
+	}
+
+	shared_except "move" "locked" {
+		unbind "Ctrl h"
+        bind "Ctrl k" { SwitchToMode "Move"; }
+    }
+	move {
+		unbind "Ctrl h"
+		bind "Ctrl k" { SwitchToMode "Normal"; }
+	}
+
+	shared_except "session" "locked" {
+		unbind "Ctrl o"
+        bind "Ctrl h" { SwitchToMode "Session"; }
+    }
+	session {
+		unbind "Ctrl o"
+		bind "Ctrl h" { SwitchToMode "Normal"; }
+	}
+}
