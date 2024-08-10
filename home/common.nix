@@ -3,4 +3,6 @@
   programs.home-manager.enable = true;
 
   nixpkgs.config.allowUnfree = true;
+
+  manual.manpages.enable = false;
 }

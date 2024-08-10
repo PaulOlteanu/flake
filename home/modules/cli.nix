@@ -11,11 +11,16 @@
   # TODO: Figure out theming
   programs.fish.enable = true;
 
+  programs.bat.enable = true;
+  programs.bat.config.theme = "TwoDark"; 
+
   programs.eza.enable = true;
   programs.fd.enable = true;
   programs.ripgrep.enable = true;
   programs.jq.enable = true;
   programs.zoxide.enable = true;
+
+  # TODO: Figure out why I have tealdeer as a package
   programs.tealdeer.enable = true;
   programs.lazygit.enable = true;
   programs.bottom.enable = true;
@@ -38,5 +43,6 @@
   home.packages = [
     (pkgs.python3Packages.callPackage ../../packages/shyaml.nix {})
     (pkgs.callPackage ../../packages/flamegraph.nix {})
+    pkgs.procs
   ];
 }

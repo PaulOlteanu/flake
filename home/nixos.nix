@@ -39,6 +39,8 @@
     alejandra
     taplo
 
+    zed-editor
+
     grim
     slurp
     playerctl
