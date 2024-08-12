@@ -78,6 +78,7 @@
       {
         name = "nix";
         formatter.command = "alejandra";
+        language-servers = ["nil"];
       }
 
       {
@@ -97,6 +98,11 @@
           args = ["--parser" "typescript"];
         };
       }
+
+      {
+        name = "scala";
+        auto-format = false;
+      }
     ];
 
     language-server = {
@@ -106,6 +112,8 @@
 
       ruff.command = "ruff-lsp";
       ruff.config.settings.args = ["--ignore" "E501"];
+
+      metals.timeout = 60;
     };
   };
 }

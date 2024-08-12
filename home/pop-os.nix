@@ -3,17 +3,21 @@
   home.homeDirectory = "/home/paul";
 
   imports = [
-    ./modules/desktop
     ./modules/k9s
-
     ./modules/cli.nix
-
-    ./modules/wezterm.nix
     ./modules/helix.nix
-    ./modules/vscode.nix
   ];
 
-  modules.desktop.enable = true;
+  programs.fish.shellInit = ''
+    fish_add_path /home/paul/bin
+    fish_add_path /home/paul/.cargo/bin
+    fish_add_path /home/paul/.local/bin
+    fish_add_path /home/paul/.local/share/coursier/bin
+    fish_add_path /home/paul/.krew/bin
+    fish_add_path /home/paul/go/bin
+
+    mise activate fish | source
+  '';
 
   # TODO: Configure through home manager
   programs.neovim.enable = true;
@@ -22,15 +26,8 @@
   programs.ruff.settings = {};
 
   home.packages = with pkgs; [
-    cachix
-
-    awscli2 # TODO: Configure through home manager
     oci-cli
-    kubernetes # TODO: Not set this (just need kubectl)
 
-    flyctl
-
-    rustup
     pyright
     nodePackages.typescript-language-server
     nodePackages.prettier
@@ -38,15 +35,6 @@
     nil
     alejandra
     taplo
-
-    # zed-editor
-
-    grim
-    slurp
-    playerctl
-
-    spotify
-    discord
   ];
 
   home.sessionVariables = {
