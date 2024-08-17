@@ -28,7 +28,7 @@
 
     # awscli2 # TODO: Configure through home manager
     oci-cli
-    kubernetes # TODO: Not set this (just need kubectl)
+    kubectl
 
     flyctl
 
@@ -41,14 +41,14 @@
     alejandra
     taplo
 
-    # zed-editor
-
     pkg-config
     openssl
 
     grim
     slurp
     playerctl
+
+    ckan
 
     spotify
     discord

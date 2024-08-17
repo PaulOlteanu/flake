@@ -19,6 +19,11 @@
       url = "github:wez/wezterm?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # nixos-cosmic = {
+    #   url = "github:lilyinstarlight/nixos-cosmic";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs = {
@@ -68,6 +73,23 @@
             inherit inputs;
           };
         };
+    };
+
+    nixosConfigurations = {
+      nixos = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          # {
+          #   nix.settings = {
+          #     substituters = ["https://cosmic.cachix.org/"];
+          #     trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
+          #   };
+          # }
+          # nixos-cosmic.nixosModules.default
+
+          ./systems/nixos/configuration.nix
+        ];
+      };
     };
   };
 }
