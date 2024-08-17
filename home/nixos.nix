@@ -7,7 +7,9 @@
     ./modules/k9s
 
     ./modules/cli.nix
+    ./modules/embedded.nix
 
+    ./modules/alacritty.nix
     ./modules/wezterm.nix
     ./modules/helix.nix
     ./modules/vscode.nix
@@ -24,7 +26,7 @@
   home.packages = with pkgs; [
     cachix
 
-    awscli2 # TODO: Configure through home manager
+    # awscli2 # TODO: Configure through home manager
     oci-cli
     kubernetes # TODO: Not set this (just need kubectl)
 
@@ -41,6 +43,9 @@
 
     # zed-editor
 
+    pkg-config
+    openssl
+
     grim
     slurp
     playerctl
@@ -51,5 +56,6 @@
 
   home.sessionVariables = {
     EDITOR = "hx";
+    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
   };
 }

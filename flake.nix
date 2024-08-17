@@ -14,6 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    wezterm = {
+      url = "github:wez/wezterm?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -21,8 +26,11 @@
     home-manager,
     stylix,
     ...
-  }: {
-    homeConfigurations = {
+  } @ inputs: {
+    homeConfigurations = let
+      # TODO: Figure out how to not need this here
+      stylix-theme = ./themes/one-dark.yaml;
+    in {
       "paul@nixos" = let
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
@@ -36,11 +44,9 @@
             ./home/nixos.nix
           ];
 
-          # TODO: Figure out how to get rid of this
-          extraSpecialArgs = let
-            stylix-theme = ./themes/one-dark.yaml;
-          in {
+          extraSpecialArgs = {
             inherit stylix-theme;
+            inherit inputs;
           };
         };
 
@@ -57,10 +63,9 @@
             ./home/pop-os.nix
           ];
 
-          extraSpecialArgs = let
-            stylix-theme = ./themes/one-dark.yaml;
-          in {
+          extraSpecialArgs = {
             inherit stylix-theme;
+            inherit inputs;
           };
         };
     };

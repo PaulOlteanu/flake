@@ -1,9 +1,11 @@
 {
+  inputs,
   config,
   pkgs,
   ...
 }: {
   programs.wezterm.enable = true;
+  programs.wezterm.package = inputs.wezterm.packages.${pkgs.system}.default;
 
   programs.wezterm.extraConfig = ''
     local wezterm = require 'wezterm'
@@ -20,6 +22,7 @@
       window_padding = {
         right = 16,
       },
+      adjust_window_size_when_changing_font_size = false,
 
       keys = {
         { key = 'V', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },
