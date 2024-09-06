@@ -20,10 +20,11 @@
   programs.jq.enable = true;
   programs.zoxide.enable = true;
 
-  # TODO: Figure out why I have tealdeer as a package
   programs.tealdeer.enable = true;
   programs.lazygit.enable = true;
   programs.bottom.enable = true;
+
+  programs.yazi.enable = true;
 
   programs.fzf = {
     enable = true;
