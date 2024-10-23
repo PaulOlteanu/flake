@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  nixpkgs.overlays = [ (self: super: { utillinux = super.util-linux; })];
+
   home.username = "paul";
   home.homeDirectory = "/home/paul";
 
@@ -15,6 +17,7 @@
     fish_add_path /home/paul/.local/share/coursier/bin
     fish_add_path /home/paul/.krew/bin
     fish_add_path /home/paul/go/bin
+    fish_add_path /home/paul/.yarn/bin
 
     mise activate fish | source
   '';
@@ -24,6 +27,8 @@
 
   programs.ruff.enable = true;
   programs.ruff.settings = {};
+
+  programs.git.lfs.enable = true;
 
   home.packages = with pkgs; [
     oci-cli
@@ -35,6 +40,8 @@
     nil
     alejandra
     taplo
+    ktlint
+    uv
   ];
 
   home.sessionVariables = {
