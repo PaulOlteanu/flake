@@ -18,6 +18,7 @@
     fish_add_path /home/paul/.krew/bin
     fish_add_path /home/paul/go/bin
     fish_add_path /home/paul/.yarn/bin
+    fish_add_path /usr/local/cuda-12.6/bin/
 
     mise activate fish | source
   '';
@@ -33,15 +34,21 @@
   home.packages = with pkgs; [
     oci-cli
 
+    uv
     pyright
+    ruff-lsp
+
     nodePackages.typescript-language-server
     nodePackages.prettier
-    black
+
     nil
     alejandra
+
     taplo
+
     ktlint
-    uv
+
+    protobuf_27
   ];
 
   home.sessionVariables = {

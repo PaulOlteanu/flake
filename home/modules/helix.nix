@@ -69,10 +69,6 @@
         name = "python";
         auto-format = true;
         language-servers = ["pyright" "ruff"];
-        formatter = {
-          command = "black";
-          args = ["--line-length" "88" "--quiet" "-"];
-        };
       }
 
       {
