@@ -2,6 +2,7 @@
   imports = [
     ./starship.nix
     ./git.nix
+    ./jj.nix
     ./helix.nix
   ];
 

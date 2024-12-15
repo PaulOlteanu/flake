@@ -18,6 +18,7 @@
   # programs.git.lfs.enable = true;
 
   home.packages = with pkgs; [
+    heaptrack
     # oci-cli
 
     # pyright
