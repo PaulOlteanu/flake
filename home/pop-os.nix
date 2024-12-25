@@ -29,10 +29,16 @@
   programs.ruff.enable = true;
   programs.ruff.settings = {};
 
+  programs.direnv.enable = true;
+  programs.direnv.config = {
+    global.load_dotenv = true;
+  };
+
   programs.git.lfs.enable = true;
 
   home.packages = with pkgs; [
     oci-cli
+    kubectl
 
     uv
     pyright
