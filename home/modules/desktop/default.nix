@@ -89,7 +89,7 @@ in {
 
     home.packages = with pkgs; [
       noto-fonts
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       noto-fonts-emoji
       liberation_ttf
       font-awesome
@@ -98,7 +98,8 @@ in {
       source-han-serif-japanese
       jetbrains-mono
       public-sans
-      (nerdfonts.override {fonts = ["JetBrainsMono"];})
+      # (nerdfonts.override {fonts = ["JetBrainsMono"];})
+      nerd-fonts.jetbrains-mono
 
       # Other ====================================================================
       nemo-with-extensions

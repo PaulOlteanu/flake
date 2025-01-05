@@ -60,7 +60,6 @@
     decoration = {
       rounding = false;
       blur.enabled = false;
-      drop_shadow = false;
     };
 
     animations = {
@@ -94,11 +93,11 @@
     "$mainMod" = "SUPER";
 
     bind = [
-      "$mainMod, N, exec, wezterm"
+      "$mainMod, N, exec, ghostty"
 
       "$mainMod, SPACE, exec, rofi -show drun"
       "$mainMod, Q, killactive,"
-      "$mainMod, M, exec, /home/paul/.config/hypr/killhypr"
+      "$mainMod, M, exec, hyprctl dispatch exit"
       "$mainMod, E, exec, nemo"
       "$mainMod, F, togglefloating"
       "$mainMod, P, pseudo,"
@@ -154,7 +153,7 @@
   };
 
   # TODO: Include this file here
-  wayland.windowManager.hyprland.extraConfig = ''
-    source = /home/paul/.config/hypr/windows.conf
-  '';
+  # wayland.windowManager.hyprland.extraConfig = ''
+  #   source = /home/paul/.config/hypr/windows.conf
+  # '';
 }

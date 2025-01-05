@@ -2,8 +2,8 @@
   description = "";
 
   inputs = {
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:nixos/nixpkgs/e9f23698d0562cd4dce6abd9d28fa70ad3550db6";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:nixos/nixpkgs/e9f23698d0562cd4dce6abd9d28fa70ad3550db6";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -16,21 +16,22 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    wezterm = {
-      url = "github:wez/wezterm?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # nixos-cosmic = {
-    #   url = "github:lilyinstarlight/nixos-cosmic";
+    # wezterm = {
+    #   url = "github:wez/wezterm?dir=nix";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     nixpkgs,
     home-manager,
     stylix,
+    nixos-cosmic,
     ...
   } @ inputs: {
     homeConfigurations = let
@@ -48,6 +49,25 @@
             stylix.homeManagerModules.stylix
             ./home/common.nix
             ./home/nixos.nix
+          ];
+
+          extraSpecialArgs = {
+            inherit stylix-theme;
+            inherit inputs;
+          };
+        };
+
+      "paul@neutron" = let
+        system = "x86_64-linux";
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+
+          modules = [
+            stylix.homeManagerModules.stylix
+            ./home/common.nix
+            ./home/neutron.nix
           ];
 
           extraSpecialArgs = {
@@ -111,6 +131,21 @@
           # nixos-cosmic.nixosModules.default
 
           ./systems/nixos/configuration.nix
+        ];
+      };
+
+      neutron = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          {
+            nix.settings = {
+              substituters = ["https://cosmic.cachix.org/"];
+              trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
+            };
+          }
+          nixos-cosmic.nixosModules.default
+
+          ./systems/neutron/configuration.nix
         ];
       };
     };

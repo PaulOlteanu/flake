@@ -5,6 +5,8 @@
     font.size = 12;
     font.normal.family = "JetbrainsMonoNL Nerd Font";
 
+    terminal.shell.program = "fish";
+
     colors.primary = {
       background = "#282c34";
       foreground = "#abb2bf";
