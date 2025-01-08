@@ -12,8 +12,6 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.auto-optimise-store = true;
-  nix.settings.substituters = ["https://devenv.cachix.org"];
-  nix.settings.trusted-public-keys = ["devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -42,8 +40,8 @@
   };
 
   services.udev.extraHwdb = ''
-  mouse:usb:v1532p00b7:name:Razer Razer DeathAdder V3 Pro:
-    MOUSE_DPI=1600@1000
+    mouse:usb:v1532p00b7:name:Razer Razer DeathAdder V3 Pro:
+      MOUSE_DPI=1600@1000
   '';
 
   security.polkit.enable = true;
@@ -73,8 +71,6 @@
 
   services.udev.packages = [pkgs.openocd];
 
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager.cosmic-greeter.enable = true;
   environment.systemPackages = with pkgs; [
     neovim
     helix
@@ -98,6 +94,14 @@
 
   # Needs to be enabled
   programs.dconf.enable = true;
+
+  # services.gnome.gnome-keyring.enable = true;
+  # services.displayManager.sddm.enable = true;
+  # services.displayManager.sddm.wayland.enable = true;
+  # programs.niri.enable = true;
+  #
+  services.desktopManager.cosmic.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
 
   hardware.graphics = {
     enable = true;

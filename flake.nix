@@ -2,8 +2,10 @@
   description = "";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:nixos/nixpkgs/e9f23698d0562cd4dce6abd9d28fa70ad3550db6";
+    nixpkgs.follows = "nixos-cosmic/nixpkgs";
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+
+    # nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -20,11 +22,6 @@
     #   url = "github:wez/wezterm?dir=nix";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -98,7 +95,7 @@
       "paul@macbook" = let
         system = "aarch64-darwin";
         pkgs = nixpkgs.legacyPackages.${system};
-      in 
+      in
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 
@@ -115,7 +112,7 @@
             # inherit stylix-theme;
             inherit inputs;
           };
-      };
+        };
     };
 
     nixosConfigurations = {
@@ -144,7 +141,6 @@
             };
           }
           nixos-cosmic.nixosModules.default
-
           ./systems/neutron/configuration.nix
         ];
       };

@@ -10,6 +10,7 @@ with lib; let
 in {
   imports = [
     ./hyprland.nix
+    ./niri.nix
     ./waybar.nix
   ];
 
@@ -23,8 +24,7 @@ in {
     stylix.polarity = "dark";
     stylix.base16Scheme = stylix-theme;
     stylix.fonts.monospace.name = "JetbrainsMonoNL Nerd Font";
-    stylix.fonts.monospace.package =
-      pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+    stylix.fonts.monospace.package = pkgs.nerd-fonts.jetbrains-mono;
 
     stylix.targets.fish.enable = false;
     stylix.targets.helix.enable = false;
@@ -69,24 +69,8 @@ in {
     services.playerctld.enable = true;
     services.udiskie.enable = true;
     services.swaync.enable = true;
-    services.hyprpaper.enable = true;
-    services.hyprpaper.settings = {
-      preload = "/home/paul/Pictures/Penguin.png";
-      wallpaper = ",/home/paul/Pictures/Penguin.png";
-      splash = false;
-    };
 
-    xdg.portal.enable = true;
-    xdg.portal.xdgOpenUsePortal = true;
-    xdg.portal.configPackages = [
-      pkgs.xdg-desktop-portal-hyprland
-      pkgs.xdg-desktop-portal-gtk
-    ];
-    xdg.portal.extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland
-      pkgs.xdg-desktop-portal-gtk
-    ];
-
+    programs.fuzzel.enable = true;
     home.packages = with pkgs; [
       noto-fonts
       noto-fonts-cjk-sans
@@ -96,9 +80,7 @@ in {
       source-han-sans
       source-han-sans-japanese
       source-han-serif-japanese
-      jetbrains-mono
       public-sans
-      # (nerdfonts.override {fonts = ["JetBrainsMono"];})
       nerd-fonts.jetbrains-mono
 
       # Other ====================================================================
@@ -116,10 +98,6 @@ in {
       glib
       gsettings-desktop-schemas
       xdg-utils
-
-      # TODO: Configure though home manager. These have config options
-      waybar
-      rofi-wayland
     ];
   };
 }

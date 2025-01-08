@@ -4,6 +4,24 @@
   pkgs,
   ...
 }: {
+  services.hyprpaper.enable = true;
+  services.hyprpaper.settings = {
+    preload = "/home/paul/Pictures/Penguin.png";
+    wallpaper = ",/home/paul/Pictures/Penguin.png";
+    splash = false;
+  };
+
+  xdg.portal.enable = true;
+  xdg.portal.xdgOpenUsePortal = true;
+  xdg.portal.configPackages = [
+    pkgs.xdg-desktop-portal-hyprland
+    pkgs.xdg-desktop-portal-gtk
+  ];
+  xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-hyprland
+    pkgs.xdg-desktop-portal-gtk
+  ];
+
   wayland.windowManager.hyprland.enable = true;
 
   wayland.windowManager.hyprland.settings = {
