@@ -5,6 +5,10 @@
 }: {
   programs.git = {
     enable = true;
+    ignores = [
+      ".helix/"
+    ];
+
     difftastic.enable = true;
 
     userEmail = "p.a.olteanu@gmail.com";
