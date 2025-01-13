@@ -106,8 +106,8 @@
 
       pyright.config.python.analysis.typeCheckingMode = "basic";
 
-      ruff.command = "ruff-lsp";
-      ruff.config.settings.args = ["--ignore" "E501"];
+      ruff.command = "ruff";
+      ruff.args = ["server"];
 
       metals.timeout = 60;
     };
