@@ -25,6 +25,11 @@
   programs.ruff.enable = true;
   programs.ruff.settings = {};
 
+  programs.nix-index = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
   home.packages = with pkgs; [
     cachix
 
@@ -33,6 +38,7 @@
     kubectl
 
     flyctl
+    nixpacks
 
     rustup
     pyright

@@ -27,11 +27,11 @@
   time.hardwareClockInLocalTime = true;
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  nix.gc = {
-    automatic = true;
-    dates = "daily";
-    options = "--delete-older-than 7d";
-  };
+  # nix.gc = {
+  #   automatic = true;
+  #   dates = "daily";
+  #   options = "--delete-older-than 7d";
+  # };
 
   services.xserver = {
     xkb.layout = "us";
@@ -66,7 +66,7 @@
   users.users.paul = {
     isNormalUser = true;
     description = "Paul Olteanu";
-    extraGroups = ["networkmanager" "wheel" "plugdev" "dialout"];
+    extraGroups = ["networkmanager" "wheel" "plugdev" "dialout" "docker"];
   };
 
   services.udev.packages = [pkgs.openocd];
@@ -83,6 +83,8 @@
     firefox
 
     linuxPackages_latest.perf
+
+    dive # look into docker image layers
   ];
 
   fonts = {
@@ -95,11 +97,10 @@
   # Needs to be enabled
   programs.dconf.enable = true;
 
-  # services.gnome.gnome-keyring.enable = true;
+  services.gnome.gnome-keyring.enable = true;
   # services.displayManager.sddm.enable = true;
   # services.displayManager.sddm.wayland.enable = true;
   # programs.niri.enable = true;
-  #
   services.desktopManager.cosmic.enable = true;
   services.displayManager.cosmic-greeter.enable = true;
 
@@ -108,7 +109,7 @@
     enable32Bit = true;
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
   boot.kernelParams = ["nvidia_drm.fbdev=1"];
   hardware.nvidia = {
     modesetting.enable = true;
@@ -116,6 +117,7 @@
     nvidiaSettings = true;
     # package = config.boot.kernelPackages.nvidiaPackages.stable;
     package = config.boot.kernelPackages.nvidiaPackages.beta;
+    # package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 
   environment.sessionVariables = {
@@ -123,6 +125,10 @@
     XDG_CACHE_HOME = "$HOME/.cache";
     NIXOS_OZONE_WL = "1";
   };
+
+  # Enable common container config files in /etc/containers
+  virtualisation.containers.enable = true;
+  virtualisation.docker.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

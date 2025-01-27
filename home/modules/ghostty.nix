@@ -22,7 +22,7 @@
       "ctrl+six=goto_tab:6"
       "ctrl+seven=goto_tab:7"
       "ctrl+eight=goto_tab:8"
-      "ctrl+nine=last_tab"
+      "ctrl+nine=goto_tab:9"
       "ctrl+tab=next_tab"
       "ctrl+shift+tab=previous_tab"
     ];
