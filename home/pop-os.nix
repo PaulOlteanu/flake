@@ -54,7 +54,7 @@
 
     ktlint
 
-    protobuf_27
+    # protobuf_25
   ];
 
   home.sessionVariables = {

@@ -74,84 +74,84 @@
     solidity.format = "";
 
     git_branch = {
-      disabled = true;
+      # disabled = true;
       format = "\\[[\$symbol\$branch](\$style)\\]";
     };
 
     git_commit = {
-      disabled = true;
+      # disabled = true;
     };
 
     git_status = {
       format = "([\\[\$all_status\$ahead_behind\\]](\$style))";
-      disabled = true;
+      # disabled = true;
     };
 
     git_state = {
-      disabled = true;
+      # disabled = true;
       format = "[\(\$state( \$progress_current of \$progress_total)\)](\$style)";
       cherry_pick = "[🍒 PICKING](bold red)";
     };
 
     # git_metrics.disabled = true;
 
-    custom.git_branch = {
-      when = true;
-      command = "jj root >/dev/null 2>&1 || starship module git_branch";
-      description = "Only show git_branch if we're not in a jj repo";
-    };
+    # custom.git_branch = {
+    #   when = true;
+    #   command = "jj root >/dev/null 2>&1 || starship module git_branch";
+    #   description = "Only show git_branch if we're not in a jj repo";
+    # };
 
-    custom.git_commit = {
-      when = true;
-      command = "jj root >/dev/null 2>&1 || starship module git_commit";
-      description = "Only show git_branch if we're not in a jj repo";
-    };
+    # custom.git_commit = {
+    #   when = true;
+    #   command = "jj root >/dev/null 2>&1 || starship module git_commit";
+    #   description = "Only show git_branch if we're not in a jj repo";
+    # };
 
-    custom.git_state = {
-      when = true;
-      command = "jj root >/dev/null 2>&1 || starship module git_state";
-      description = "Only show git_branch if we're not in a jj repo";
-    };
+    # custom.git_state = {
+    #   when = true;
+    #   command = "jj root >/dev/null 2>&1 || starship module git_state";
+    #   description = "Only show git_branch if we're not in a jj repo";
+    # };
 
-    custom.git_status = {
-      when = true;
-      command = "jj root >/dev/null 2>&1 || starship module git_status";
-      description = "Only show git_branch if we're not in a jj repo";
-    };
+    # custom.git_status = {
+    #   when = true;
+    #   command = "jj root >/dev/null 2>&1 || starship module git_status";
+    #   description = "Only show git_branch if we're not in a jj repo";
+    # };
 
-    custom.jj = {
-      description = "current jj status";
-      symbol = "";
-      when = true;
-      # jj root > /dev/null && jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 --template '
-      command = ''
-        jj root > /dev/null 2>&1 && jj log --revisions @ --no-graph --color always --limit 1 --template '
-          separate(" ",
-            concat(
-              raw_escape_sequence("\e[0;37m"),
-              "[",
-              change_id.shortest(4),
-              if(bookmarks.len() != 0, " "),
-              bookmarks,
-              "]"
-            ),
-            concat(
-              if(conflict, "💥"),
-              if(divergent, "🚧"),
-              if(hidden, "👻"),
-              if(immutable, "🔒"),
-            ),
-            raw_escape_sequence("\x1b[1;32m") ++ if(empty, "(empty)"),
-            raw_escape_sequence("\x1b[1;32m") ++ if(description.first_line().len() == 0,
-              "(no description set)",
-              if(description.first_line().substr(0, 29) == description.first_line(),
-                description.first_line(),
-                description.first_line().substr(0, 29) ++ "…",
-              )
-            ) ++ raw_escape_sequence("\x1b[0m"),
-          )
-        '
-      '';
-    };
+    # custom.jj = {
+    #   description = "current jj status";
+    #   symbol = "";
+    #   when = true;
+    #   # jj root > /dev/null && jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 --template '
+    #   command = ''
+    #     jj root > /dev/null 2>&1 && jj log --revisions @ --no-graph --color always --limit 1 --template '
+    #       separate(" ",
+    #         concat(
+    #           raw_escape_sequence("\e[0;37m"),
+    #           "[",
+    #           change_id.shortest(4),
+    #           if(bookmarks.len() != 0, " "),
+    #           bookmarks,
+    #           "]"
+    #         ),
+    #         concat(
+    #           if(conflict, "💥"),
+    #           if(divergent, "🚧"),
+    #           if(hidden, "👻"),
+    #           if(immutable, "🔒"),
+    #         ),
+    #         raw_escape_sequence("\x1b[1;32m") ++ if(empty, "(empty)"),
+    #         raw_escape_sequence("\x1b[1;32m") ++ if(description.first_line().len() == 0,
+    #           "(no description set)",
+    #           if(description.first_line().substr(0, 29) == description.first_line(),
+    #             description.first_line(),
+    #             description.first_line().substr(0, 29) ++ "…",
+    #           )
+    #         ) ++ raw_escape_sequence("\x1b[0m"),
+    #       )
+    #     '
+    #   '';
+    # };
   };
 }
