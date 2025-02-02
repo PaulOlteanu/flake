@@ -41,10 +41,10 @@
 
   services.udev.extraHwdb = ''
     mouse:usb:v1532p00b7:name:Razer Razer DeathAdder V3 Pro:
-      MOUSE_DPI=1600@1000
+      MOUSE_DPI=800@1000
   '';
 
-  security.polkit.enable = true;
+  # security.polkit.enable = true;
 
   services.gvfs.enable = true;
   services.udisks2.enable = true;
@@ -84,7 +84,7 @@
 
     linuxPackages_latest.perf
 
-    dive # look into docker image layers
+    dive
   ];
 
   fonts = {
@@ -97,12 +97,10 @@
   # Needs to be enabled
   programs.dconf.enable = true;
 
-  services.gnome.gnome-keyring.enable = true;
-  # services.displayManager.sddm.enable = true;
-  # services.displayManager.sddm.wayland.enable = true;
-  # programs.niri.enable = true;
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager.cosmic-greeter.enable = true;
+  # services.desktopManager.cosmic.enable = true;
+  # services.displayManager.cosmic-greeter.enable = true;
+
+  programs.hyprland.enable = true;
 
   hardware.graphics = {
     enable = true;
@@ -120,13 +118,13 @@
     # package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 
+  # TODO: Can we put these elsewhere
   environment.sessionVariables = {
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_CACHE_HOME = "$HOME/.cache";
     NIXOS_OZONE_WL = "1";
   };
 
-  # Enable common container config files in /etc/containers
   virtualisation.containers.enable = true;
   virtualisation.docker.enable = true;
 

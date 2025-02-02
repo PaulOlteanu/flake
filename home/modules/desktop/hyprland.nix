@@ -1,15 +1,11 @@
-# TODO: Need to move hyprland scripts into here
 {
   config,
   pkgs,
   ...
 }: {
-  services.hyprpaper.enable = true;
-  services.hyprpaper.settings = {
-    preload = "/home/paul/Pictures/Penguin.png";
-    wallpaper = ",/home/paul/Pictures/Penguin.png";
-    splash = false;
-  };
+  home.packages = with pkgs; [
+    hyprpolkitagent
+  ];
 
   xdg.portal.enable = true;
   xdg.portal.xdgOpenUsePortal = true;
@@ -22,17 +18,30 @@
     pkgs.xdg-desktop-portal-gtk
   ];
 
-  wayland.windowManager.hyprland.enable = true;
+  programs.fuzzel.enable = true;
+
+  services.hyprpaper.enable = true;
+  services.hyprpaper.settings = {
+    preload = "/home/paul/Pictures/Penguin.png";
+    wallpaper = ",/home/paul/Pictures/Penguin.png";
+    splash = false;
+  };
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
 
   wayland.windowManager.hyprland.settings = {
     env = [
       "LIBVA_DRIVER_NAME, nvidia"
       "XDG_SESSION_TYPE, wayland"
-      "GBM_BACKEND, nvidia-drm"
-      "__GLX_VENDOR_LIBRARY_NAME, nvidia"
+      "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+      "LIBVA_DRIVER_NAME,nvidia"
       "XCURSOR_SIZE,24"
-      "GDK_SCALE,2"
-      "XDG_DATA_DIRS, ${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/gsettings-desktop-schemas-45.0:$XDG_DATA_DIRS"
+      # "GBM_BACKEND, nvidia-drm"
+      # "GDK_SCALE,2"
+      # "XDG_DATA_DIRS, ${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/gsettings-desktop-schemas-45.0:$XDG_DATA_DIRS"
     ];
     monitor = [
       "DP-3,3840x2160@144,0x0,auto"
@@ -45,8 +54,7 @@
     ];
     exec-once = [
       "waybar"
-      "/home/paul/.config/hypr/import-gsettings"
-      "/nix/store/$(ls -la /nix/store | grep polkit-kde-agent | grep '^d' | awk '{print $9}')/libexec/polkit-kde-authentication-agent-1"
+      "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
     ];
 
     input = {
@@ -67,8 +75,8 @@
       gaps_in = 5;
       gaps_out = 10;
       border_size = 2;
-      # "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-      # "col.inactive_border" = "rgba(595959aa)";
+      "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+      "col.inactive_border" = "rgba(595959aa)";
 
       layout = "dwindle";
 
@@ -111,9 +119,9 @@
     "$mainMod" = "SUPER";
 
     bind = [
-      "$mainMod, N, exec, ghostty"
+      "$mainMod, N, exec, wezterm"
 
-      "$mainMod, SPACE, exec, rofi -show drun"
+      "$mainMod, SPACE, exec, fuzzel"
       "$mainMod, Q, killactive,"
       "$mainMod, M, exec, hyprctl dispatch exit"
       "$mainMod, E, exec, nemo"

@@ -12,29 +12,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix = {
-      url = "github:danth/stylix";
+    wezterm = {
+      url = "github:wez/wezterm?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
-
-    # wezterm = {
-    #   url = "github:wez/wezterm?dir=nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
   outputs = {
     nixpkgs,
     home-manager,
-    stylix,
     nixos-cosmic,
     ...
   } @ inputs: {
-    homeConfigurations = let
-      # TODO: Figure out how to not need this here
-      stylix-theme = ./themes/one-dark.yaml;
-    in {
+    homeConfigurations = {
       "paul@nixos" = let
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
@@ -43,13 +33,11 @@
           inherit pkgs;
 
           modules = [
-            stylix.homeManagerModules.stylix
             ./home/common.nix
             ./home/nixos.nix
           ];
 
           extraSpecialArgs = {
-            inherit stylix-theme;
             inherit inputs;
           };
         };
@@ -62,13 +50,11 @@
           inherit pkgs;
 
           modules = [
-            stylix.homeManagerModules.stylix
             ./home/common.nix
             ./home/neutron.nix
           ];
 
           extraSpecialArgs = {
-            inherit stylix-theme;
             inherit inputs;
           };
         };
@@ -81,13 +67,11 @@
           inherit pkgs;
 
           modules = [
-            stylix.homeManagerModules.stylix
             ./home/common.nix
             ./home/pop-os.nix
           ];
 
           extraSpecialArgs = {
-            inherit stylix-theme;
             inherit inputs;
           };
         };
@@ -109,7 +93,6 @@
           # Optionally use extraSpecialArgs
           # to pass through arguments to home.nix
           extraSpecialArgs = {
-            # inherit stylix-theme;
             inherit inputs;
           };
         };

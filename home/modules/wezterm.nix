@@ -11,18 +11,26 @@
     local wezterm = require 'wezterm'
     local act = wezterm.action
     return {
-      enable_wayland = false,
+      enable_wayland = true,
+
+      default_prog = { 'fish' },
+
       color_scheme = 'OneDark (base16)',
       font = wezterm.font 'JetbrainsMonoNL Nerd Font',
-      font_size = 18.0,
+      font_size = 12.0,
+
       tiling_desktop_environments = {
-        'X11 wlroots wm'
+        'X11 wlroots wm',
+        'X11 Hyprland :D',
+        'X11 Hyprland',
       },
+      adjust_window_size_when_changing_font_size = false,
+      window_decorations = "RESIZE",
+
       enable_scroll_bar = true,
       window_padding = {
         right = 16,
       },
-      adjust_window_size_when_changing_font_size = false,
 
       keys = {
         { key = 'V', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },

@@ -10,7 +10,7 @@
     ./modules/embedded.nix
 
     ./modules/alacritty.nix
-    # ./modules/wezterm.nix
+    ./modules/wezterm.nix
     ./modules/ghostty.nix
 
     ./modules/helix.nix
