@@ -1,6 +1,4 @@
 {pkgs, ...}: {
-  # nixpkgs.overlays = [ (self: super: { utillinux = super.util-linux; })];
-
   home.username = "paul";
   home.homeDirectory = "/Users/paul";
 
@@ -25,10 +23,9 @@
     # nodePackages.typescript-language-server
     # nodePackages.prettier
     # black
-    # nil
-    # alejandra
+    nil
+    alejandra
     # taplo
-    # ktlint
     # uv
   ];
 
