@@ -2,10 +2,10 @@
   description = "";
 
   inputs = {
-    nixpkgs.follows = "nixos-cosmic/nixpkgs";
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
-
     # nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.follows = "nixos-cosmic/nixpkgs";
+
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -16,6 +16,11 @@
       url = "github:wez/wezterm?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    helix = {
+      url = "github:helix-editor/helix/7275b7f";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -23,7 +28,12 @@
     home-manager,
     nixos-cosmic,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    overlays = [
+      (_: prev: {wezterm = inputs.wezterm.packages.${prev.system}.wezterm;})
+      (_: prev: {helix = inputs.helix.packages.${prev.system}.helix;})
+    ];
+  in {
     homeConfigurations = {
       "paul@nixos" = let
         system = "x86_64-linux";
@@ -88,6 +98,9 @@
           modules = [
             ./home/common.nix
             ./home/macbook.nix
+            {
+              nixpkgs.overlays = overlays;
+            }
           ];
 
           # Optionally use extraSpecialArgs

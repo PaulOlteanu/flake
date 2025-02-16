@@ -16,6 +16,8 @@
   # programs.git.lfs.enable = true;
 
   home.packages = with pkgs; [
+    cachix
+
     heaptrack
     # oci-cli
 

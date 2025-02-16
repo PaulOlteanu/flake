@@ -1,5 +1,20 @@
 {
   "nodes": {
+    "crane": {
+      "locked": {
+        "lastModified": 1737563566,
+        "narHash": "sha256-GLJvkOG29XCynQm8XWPyykMRqIhxKcBARVu7Ydrz02M=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "849376434956794ebc7a6b487d31aace395392ba",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -19,6 +34,24 @@
     "flake-utils": {
       "inputs": {
         "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_2": {
+      "inputs": {
+        "systems": "systems_2"
       },
       "locked": {
         "lastModified": 1731533236,
@@ -65,6 +98,30 @@
         "owner": "harfbuzz",
         "ref": "9.0.0",
         "repo": "harfbuzz",
+        "type": "github"
+      }
+    },
+    "helix": {
+      "inputs": {
+        "crane": "crane",
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1739457098,
+        "narHash": "sha256-a4zUQTpHagz1Kb3kLxcflsiF05FsHlrzXEuCjbzjAOM=",
+        "owner": "helix-editor",
+        "repo": "helix",
+        "rev": "7275b7f85014aad7e15d4987ec4f2249572eecfb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "helix-editor",
+        "ref": "7275b7f",
+        "repo": "helix",
         "type": "github"
       }
     },
@@ -159,6 +216,7 @@
     },
     "root": {
       "inputs": {
+        "helix": "helix",
         "home-manager": "home-manager",
         "nixos-cosmic": "nixos-cosmic",
         "nixpkgs": [
@@ -169,6 +227,27 @@
       }
     },
     "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "helix",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1737599167,
+        "narHash": "sha256-S2rHCrQWCDVp63XxL/AQbGr1g5M8Zx14C7Jooa4oM8o=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "38374302ae9edf819eac666d1f276d62c712dd06",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_2": {
       "inputs": {
         "nixpkgs": [
           "wezterm",
@@ -204,16 +283,31 @@
         "type": "github"
       }
     },
+    "systems_2": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "wezterm": {
       "inputs": {
-        "flake-utils": "flake-utils",
+        "flake-utils": "flake-utils_2",
         "freetype2": "freetype2",
         "harfbuzz": "harfbuzz",
         "libpng": "libpng",
         "nixpkgs": [
           "nixpkgs"
         ],
-        "rust-overlay": "rust-overlay",
+        "rust-overlay": "rust-overlay_2",
         "zlib": "zlib"
       },
       "locked": {

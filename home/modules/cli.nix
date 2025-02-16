@@ -22,7 +22,6 @@
   programs.zoxide.enable = true;
 
   programs.tealdeer.enable = true;
-  programs.lazygit.enable = true;
   programs.bottom.enable = true;
 
   programs.yazi.enable = true;
@@ -45,6 +44,8 @@
   home.packages = [
     (pkgs.python3Packages.callPackage ../../packages/shyaml.nix {})
     (pkgs.callPackage ../../packages/flamegraph.nix {})
+
     pkgs.procs
+    pkgs.dust
   ];
 }
