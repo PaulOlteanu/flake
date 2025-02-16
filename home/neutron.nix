@@ -40,6 +40,8 @@
     flyctl
     nixpacks
 
+    inetutils
+
     rustup
     pyright
     nodePackages.typescript-language-server

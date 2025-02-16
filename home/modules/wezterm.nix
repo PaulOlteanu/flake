@@ -25,7 +25,6 @@
         'X11 Hyprland',
       },
       adjust_window_size_when_changing_font_size = false,
-      window_decorations = "RESIZE",
 
       enable_scroll_bar = true,
       window_padding = {
