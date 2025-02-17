@@ -25,10 +25,11 @@
   programs.ruff.enable = true;
   programs.ruff.settings = {};
 
-  programs.nix-index = {
-    enable = true;
-    enableFishIntegration = true;
-  };
+  programs.command-not-found.enable = false;
+  # programs.nix-index = {
+  #   enable = true;
+  #   enableFishIntegration = true;
+  # };
 
   home.packages = with pkgs; [
     cachix
@@ -42,14 +43,19 @@
 
     inetutils
 
+    pulumi-bin
+
     rustup
+    taplo
+
     pyright
+    black
+
     nodePackages.typescript-language-server
     nodePackages.prettier
-    black
+
     nil
     alejandra
-    taplo
 
     pkg-config
     openssl

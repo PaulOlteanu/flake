@@ -32,7 +32,7 @@
       },
 
       keys = {
-        { key = 'V', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },
+        {key = 'V', mods = 'CTRL', action = act.PasteFrom 'Clipboard'},
         {key = '1', mods = 'CTRL', action = act.ActivateTab(0)},
         {key = '2', mods = 'CTRL', action = act.ActivateTab(1)},
         {key = '3', mods = 'CTRL', action = act.ActivateTab(2)},

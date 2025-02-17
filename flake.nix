@@ -35,23 +35,6 @@
     ];
   in {
     homeConfigurations = {
-      "paul@nixos" = let
-        system = "x86_64-linux";
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-        home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-
-          modules = [
-            ./home/common.nix
-            ./home/nixos.nix
-          ];
-
-          extraSpecialArgs = {
-            inherit inputs;
-          };
-        };
-
       "paul@neutron" = let
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
@@ -62,6 +45,9 @@
           modules = [
             ./home/common.nix
             ./home/neutron.nix
+            {
+              nixpkgs.overlays = overlays;
+            }
           ];
 
           extraSpecialArgs = {
@@ -112,21 +98,6 @@
     };
 
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          # {
-          #   nix.settings = {
-          #     substituters = ["https://cosmic.cachix.org/"];
-          #     trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
-          #   };
-          # }
-          # nixos-cosmic.nixosModules.default
-
-          ./systems/nixos/configuration.nix
-        ];
-      };
-
       neutron = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [

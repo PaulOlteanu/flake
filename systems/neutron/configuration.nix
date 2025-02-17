@@ -94,6 +94,8 @@
     };
   };
 
+  programs.command-not-found.enable = false;
+
   # Needs to be enabled
   programs.dconf.enable = true;
 
