@@ -10,6 +10,9 @@
     ./modules/helix.nix
   ];
 
+  modules.git.enable = true;
+  modules.git.email = "p.a.olteanu@gmail.com";
+
   programs.fish.shellInit = ''
     fish_add_path /home/paul/bin
     fish_add_path /home/paul/.cargo/bin

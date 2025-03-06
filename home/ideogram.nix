@@ -3,34 +3,32 @@
   home.homeDirectory = "/Users/paul";
 
   imports = [
-    ./modules/k9s
     ./modules/cli.nix
+    ./modules/git.nix
     ./modules/helix.nix
   ];
 
   modules.git.enable = true;
   modules.git.email = "p.a.olteanu@gmail.com";
 
-  # programs.neovim.enable = true;
-
-  # programs.ruff.enable = true;
-  # programs.ruff.settings = {};
+  programs.neovim.enable = true;
 
   # programs.git.lfs.enable = true;
 
   home.packages = with pkgs; [
-    cachix
+    # cachix
 
-    heaptrack
+    # heaptrack
     # oci-cli
 
-    # pyright
+    pyright
     # nodePackages.typescript-language-server
     # nodePackages.prettier
     # black
+
     nil
     alejandra
-    # taplo
+    taplo
     # uv
   ];
 

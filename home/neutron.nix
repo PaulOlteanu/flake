@@ -17,6 +17,9 @@
     ./modules/vscode.nix
   ];
 
+  modules.git.enable = true;
+  modules.git.email = "p.a.olteanu@gmail.com";
+
   modules.desktop.enable = true;
 
   # TODO: Configure through home manager

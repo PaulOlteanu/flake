@@ -95,6 +95,26 @@
             inherit inputs;
           };
         };
+
+      "paul@ideogram" = let
+        system = "aarch64-darwin";
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+
+          modules = [
+            ./home/common.nix
+            ./home/ideogram.nix
+            {
+              nixpkgs.overlays = overlays;
+            }
+          ];
+
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+        };
     };
 
     nixosConfigurations = {
