@@ -7,6 +7,8 @@
     ./modules/k9s
 
     ./modules/cli.nix
+    ./modules/git.nix
+
     ./modules/embedded.nix
 
     ./modules/alacritty.nix
@@ -36,6 +38,8 @@
 
   home.packages = with pkgs; [
     cachix
+
+    nixos-generators
 
     # awscli2 # TODO: Configure through home manager
     oci-cli
