@@ -11,13 +11,16 @@
     local wezterm = require 'wezterm'
     local act = wezterm.action
     return {
-      enable_wayland = true,
+      -- enable_wayland = true,
+
+      enable_wayland = false,
+      font_size = 16.0,
 
       default_prog = { 'fish' },
 
       color_scheme = 'OneDark (base16)',
       font = wezterm.font 'JetbrainsMonoNL Nerd Font',
-      font_size = 12.0,
+      -- font_size = 12.0,
 
       tiling_desktop_environments = {
         'X11 wlroots wm',

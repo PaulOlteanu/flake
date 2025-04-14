@@ -70,6 +70,7 @@
     grim
     slurp
     playerctl
+    hyprshot
 
     libevdev
 
