@@ -37,41 +37,46 @@
   # };
 
   home.packages = with pkgs; [
-    cachix
-
     nixos-generators
+    deploy-rs
+    dive
 
     # awscli2 # TODO: Configure through home manager
     oci-cli
     kubectl
 
     flyctl
-    nixpacks
 
     inetutils
 
     pulumi-bin
 
+    # Rust dev stuff
     rustup
     taplo
 
+    # Python dev stuff
     pyright
     black
 
+    # JS dev stuff
     nodePackages.typescript-language-server
     nodePackages.prettier
 
+    # Nix dev stuff
     nil
     alejandra
 
     pkg-config
     openssl
 
+    # Desktop env stuff
     grim
     slurp
     playerctl
     hyprshot
 
+    # I think for cosmic de
     libevdev
 
     spotify

@@ -66,7 +66,7 @@
   users.users.paul = {
     isNormalUser = true;
     description = "Paul Olteanu";
-    extraGroups = ["networkmanager" "wheel" "plugdev" "dialout" "docker"];
+    extraGroups = ["networkmanager" "wheel" "plugdev" "dialout"];
   };
 
   services.udev.packages = [pkgs.openocd];
@@ -83,8 +83,6 @@
     firefox
 
     linuxPackages_latest.perf
-
-    dive
   ];
 
   fonts = {
@@ -128,7 +126,9 @@
   };
 
   virtualisation.containers.enable = true;
-  virtualisation.docker.enable = true;
+  virtualisation.podman.enable = true;
+  virtualisation.podman.dockerCompat = true;
+  virtualisation.podman.defaultNetwork.settings.dns_enabled = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
