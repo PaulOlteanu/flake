@@ -44,8 +44,6 @@
       MOUSE_DPI=800@1000
   '';
 
-  # security.polkit.enable = true;
-
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
@@ -94,13 +92,13 @@
 
   programs.command-not-found.enable = false;
 
-  # Needs to be enabled
   programs.dconf.enable = true;
 
-  # services.desktopManager.cosmic.enable = true;
-  # services.displayManager.cosmic-greeter.enable = true;
-
   programs.hyprland.enable = true;
+
+  programs.niri.enable = true;
+  programs.niri.package = pkgs.niri;
+  services.xserver.displayManager.gdm.enable = true;
 
   hardware.graphics = {
     enable = true;

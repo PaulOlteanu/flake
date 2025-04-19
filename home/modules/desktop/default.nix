@@ -9,7 +9,7 @@ with lib; let
 in {
   imports = [
     ./hyprland.nix
-    # ./niri.nix
+    ./niri.nix
     ./waybar.nix
   ];
 

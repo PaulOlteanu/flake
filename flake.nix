@@ -2,10 +2,7 @@
   description = "";
 
   inputs = {
-    # nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs.follows = "nixos-cosmic/nixpkgs";
-
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -21,12 +18,17 @@
       url = "github:helix-editor/helix/7275b7f";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    niri-flake = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     nixpkgs,
     home-manager,
-    nixos-cosmic,
+    niri-flake,
     ...
   } @ inputs: let
     overlays = [
@@ -48,6 +50,7 @@
             {
               nixpkgs.overlays = overlays;
             }
+            niri-flake.homeModules.niri
           ];
 
           extraSpecialArgs = {
@@ -107,7 +110,7 @@
               trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
             };
           }
-          nixos-cosmic.nixosModules.default
+          niri-flake.nixosModules.niri
           ./systems/neutron/configuration.nix
         ];
       };

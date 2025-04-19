@@ -11,10 +11,10 @@
     local wezterm = require 'wezterm'
     local act = wezterm.action
     return {
-      -- enable_wayland = true,
+      enable_wayland = true,
 
-      enable_wayland = false,
-      font_size = 16.0,
+      -- enable_wayland = false,
+      font_size = 12.0,
 
       default_prog = { 'fish' },
 
@@ -26,6 +26,7 @@
         'X11 wlroots wm',
         'X11 Hyprland :D',
         'X11 Hyprland',
+        'Niri',
       },
       adjust_window_size_when_changing_font_size = false,
 
