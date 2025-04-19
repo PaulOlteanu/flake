@@ -39,17 +39,17 @@
   home.packages = with pkgs; [
     nixos-generators
     deploy-rs
-    dive
+
+    bpftrace
 
     # awscli2 # TODO: Configure through home manager
     oci-cli
     kubectl
-
     flyctl
+    pulumi-bin
+    dive
 
     inetutils
-
-    pulumi-bin
 
     # Rust dev stuff
     rustup
@@ -75,9 +75,6 @@
     slurp
     playerctl
     hyprshot
-
-    # I think for cosmic de
-    libevdev
 
     spotify
     discord
