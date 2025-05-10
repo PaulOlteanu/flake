@@ -64,10 +64,19 @@
   users.users.paul = {
     isNormalUser = true;
     description = "Paul Olteanu";
-    extraGroups = ["networkmanager" "wheel" "plugdev" "dialout"];
+    extraGroups = ["networkmanager" "wheel" "plugdev" "dialout" "wireshark"];
   };
 
   services.udev.packages = [pkgs.openocd];
+  programs.wireshark.enable = true;
+  programs.wireshark.package = pkgs.wireshark;
+  programs.wireshark.dumpcap.enable = true;
+  # services.udev = {
+  #   extraRules = ''
+  #     SUBSYSTEM=="usbmon", GROUP="wireshark", MODE="0640"
+  #   '';
+  # };
+  programs.sniffnet.enable = true;
 
   environment.systemPackages = with pkgs; [
     neovim

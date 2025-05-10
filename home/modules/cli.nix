@@ -43,6 +43,7 @@
   home.packages = [
     (pkgs.python3Packages.callPackage ../../packages/shyaml.nix {})
     (pkgs.callPackage ../../packages/flamegraph.nix {})
+    (pkgs.callPackage ../../packages/trim-generations {})
 
     pkgs.procs
     pkgs.dust

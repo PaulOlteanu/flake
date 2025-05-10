@@ -41,6 +41,9 @@
     deploy-rs
 
     bpftrace
+    tcpdump
+    sniffnet
+    oha
 
     # awscli2 # TODO: Configure through home manager
     oci-cli

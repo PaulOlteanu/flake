@@ -40,7 +40,7 @@
         mouse {
             // off
             // natural-scroll
-            accel-speed -0.3
+            accel-speed -0.5
             accel-profile "flat"
             // scroll-method "no-scroll"
         }
@@ -275,7 +275,7 @@
         Mod+Shift+Slash { show-hotkey-overlay; }
 
         // Suggested binds for running programs: terminal, app launcher, screen locker.
-        Mod+N { spawn "wezterm"; }
+        Mod+N { spawn "ghostty"; }
         Mod+Space { spawn "fuzzel"; }
         Super+Alt+L { spawn "swaylock"; }
 
