@@ -4,34 +4,25 @@
 
   imports = [
     ./modules/k9s
+
     ./modules/cli.nix
+    ./modules/git.nix
+
+    ./modules/wezterm.nix
+
     ./modules/helix.nix
   ];
 
   modules.git.enable = true;
   modules.git.email = "p.a.olteanu@gmail.com";
 
-  # programs.neovim.enable = true;
-
-  # programs.ruff.enable = true;
-  # programs.ruff.settings = {};
-
-  # programs.git.lfs.enable = true;
+  modules.wezterm.enable = true;
+  modules.wezterm.default_prog_path = "/Users/paul/.nix-profile/bin/fish";
 
   home.packages = with pkgs; [
-    cachix
-
-    heaptrack
-    # oci-cli
-
-    # pyright
-    # nodePackages.typescript-language-server
-    # nodePackages.prettier
-    # black
     nil
     alejandra
-    # taplo
-    # uv
+    taplo
   ];
 
   home.sessionVariables = {

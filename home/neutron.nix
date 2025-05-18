@@ -22,6 +22,8 @@
   modules.git.enable = true;
   modules.git.email = "p.a.olteanu@gmail.com";
 
+  modules.wezterm.enable = true;
+
   modules.desktop.enable = true;
 
   # TODO: Configure through home manager

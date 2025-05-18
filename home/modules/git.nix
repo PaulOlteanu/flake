@@ -22,9 +22,8 @@ in {
 
       difftastic.enable = true;
 
-      # userEmail = "p.a.olteanu@gmail.com";
-      userEmail = cfg.email;
       userName = "Paul Olteanu";
+      userEmail = cfg.email;
 
       aliases = {
         lg = "log --graph --exclude=refs/remotes/* --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative";
