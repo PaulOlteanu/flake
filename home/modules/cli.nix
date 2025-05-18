@@ -37,6 +37,7 @@
     flags = ["--disable-up-arrow"];
     settings = {
       enter_accept = false;
+      smart_sort = true;
     };
   };
 

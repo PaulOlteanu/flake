@@ -23,6 +23,7 @@
   modules.git.email = "p.a.olteanu@gmail.com";
 
   modules.wezterm.enable = true;
+  modules.wezterm.default_prog = "fish";
 
   modules.desktop.enable = true;
 
@@ -50,6 +51,8 @@
     # awscli2 # TODO: Configure through home manager
     oci-cli
     kubectl
+    kubernetes-helm
+    kubectx
     flyctl
     pulumi-bin
     dive

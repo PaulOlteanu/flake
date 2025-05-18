@@ -17,7 +17,7 @@
   modules.git.email = "p.a.olteanu@gmail.com";
 
   modules.wezterm.enable = true;
-  modules.wezterm.default_prog_path = "/Users/paul/.nix-profile/bin/fish";
+  modules.wezterm.default_prog = "/Users/paul/.nix-profile/bin/fish";
 
   home.packages = with pkgs; [
     nil

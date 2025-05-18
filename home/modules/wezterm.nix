@@ -7,16 +7,16 @@
 }: let
   cfg = config.modules.wezterm;
 
-  defaultProgLine =
-    if cfg.default_prog_path != null
+  default_prog_line =
+    if cfg.default_prog != null
     then ''
-      default_prog = { '${cfg.default_prog_path}' },
+      default_prog = { '${cfg.default_prog}' },
     ''
     else "";
 in {
   options.modules.wezterm = {
     enable = lib.mkEnableOption "wezterm module";
-    default_prog_path = lib.mkOption {
+    default_prog = lib.mkOption {
       type = with lib.types; nullOr str;
       default = null;
     };
@@ -30,12 +30,12 @@ in {
       local wezterm = require 'wezterm'
       local act = wezterm.action
       return {
-        enable_wayland = true,
-        -- enable_wayland = false,
+        -- enable_wayland = true,
+        enable_wayland = false,
 
         font_size = 12.0,
 
-        ${defaultProgLine}
+        ${default_prog_line}
 
         color_scheme = 'OneDark (base16)',
         font = wezterm.font 'JetbrainsMonoNL Nerd Font Mono',

@@ -22,6 +22,8 @@
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
   systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
+  services.avahi.enable = true;
+  services.avahi.nssmdns = true;
 
   time.timeZone = "America/Toronto";
   time.hardwareClockInLocalTime = true;
@@ -90,6 +92,8 @@
     firefox
 
     linuxPackages_latest.perf
+
+    docker-compose
   ];
 
   fonts = {
