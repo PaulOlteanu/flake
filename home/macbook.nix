@@ -23,6 +23,11 @@
     nil
     alejandra
     taplo
+
+    kubectl
+    kubernetes-helm
+    kubectx
+    helmfile-wrapped
   ];
 
   home.sessionVariables = {
