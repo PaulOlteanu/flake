@@ -1,4 +1,15 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  # TODO: Move this somewhere common
+  helm-with-plugins = pkgs.wrapHelm pkgs.kubernetes-helm {
+    plugins = [
+      pkgs.kubernetes-helmPlugins.helm-diff
+    ];
+  };
+
+  helmfile-with-plugins = pkgs.helmfile-wrapped.override {
+    inherit (helm-with-plugins) pluginsDir;
+  };
+in {
   home.username = "paul";
   home.homeDirectory = "/Users/paul";
 
@@ -25,9 +36,9 @@
     taplo
 
     kubectl
-    kubernetes-helm
     kubectx
-    helmfile-wrapped
+    helm-with-plugins
+    helmfile-with-plugins
   ];
 
   home.sessionVariables = {
