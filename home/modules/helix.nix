@@ -99,6 +99,15 @@
         name = "scala";
         auto-format = false;
       }
+
+      {
+        name = "yaml";
+        auto-format = false;
+        formatter = {
+          command = "yamlfmt";
+          args = ["-"];
+        };
+      }
     ];
 
     language-server = {

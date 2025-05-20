@@ -1,4 +1,14 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  helm-with-plugins = (pkgs.wrapHelm pkgs.kubernetes-helm {
+    plugins = [
+      pkgs.kubernetes-helmPlugins.helm-diff
+    ];
+  });
+
+  helmfile-with-plugins = pkgs.helmfile-wrapped.override {
+    inherit (helm-with-plugins) pluginsDir;
+  };
+in {
   home.username = "paul";
   home.homeDirectory = "/home/paul";
 
@@ -50,9 +60,12 @@
 
     # awscli2 # TODO: Configure through home manager
     oci-cli
+
     kubectl
-    kubernetes-helm
     kubectx
+    helm-with-plugins
+    helmfile-with-plugins
+
     flyctl
     pulumi-bin
     dive
@@ -75,6 +88,9 @@
     nil
     alejandra
 
+    yaml-language-server
+    yamlfmt
+
     pkg-config
     openssl
 
@@ -87,6 +103,11 @@
     spotify
     discord
   ];
+
+  xdg.configFile."yamlfmt/.yamlfmt.yaml".text = ''
+    formatter:
+      retain_line_breaks_single: true
+  '';
 
   home.sessionVariables = {
     EDITOR = "hx";
