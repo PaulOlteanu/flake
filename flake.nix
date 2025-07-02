@@ -104,6 +104,23 @@
             inherit inputs;
           };
         };
+
+      "polteanu@polteanu-cloudflare" = let
+        system = "x86_64-linux";
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+
+          modules = [
+            ./home/common.nix
+            ./home/cloudflare.nix
+          ];
+
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+        };
     };
 
     nixosConfigurations = {
