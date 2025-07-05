@@ -9,6 +9,8 @@
     ./modules/git.nix
     ./modules/cli.nix
     ./modules/helix.nix
+    ./modules/niri
+    ./modules/waybar
   ];
 
   modules.git.enable = true;
@@ -30,33 +32,19 @@
   # TODO: Configure through home manager
   programs.neovim.enable = true;
 
-  programs.ruff.enable = true;
-  programs.ruff.settings = {};
-
   programs.direnv.enable = true;
   programs.direnv.config = {
     global.load_dotenv = true;
   };
 
-  programs.git.lfs.enable = true;
-
   home.packages = with pkgs; [
     # oci-cli
     kubectl
-
-    # uv
-    # pyright
-    # ruff-lsp
-
-    # nodePackages.typescript-language-server
-    # nodePackages.prettier
 
     nil
     alejandra
 
     taplo
-
-    # protobuf_25
   ];
 
   home.sessionVariables = {
