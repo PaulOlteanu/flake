@@ -81,6 +81,23 @@
           };
         };
 
+      "paul@antares" = let
+        system = "x86_64-linux";
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+
+          modules = [
+            ./home/common.nix
+            ./home/antares.nix
+          ];
+
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+        };
+
       "paul@macbook" = let
         system = "aarch64-darwin";
         pkgs = nixpkgs.legacyPackages.${system};
