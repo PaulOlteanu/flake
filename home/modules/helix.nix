@@ -61,6 +61,11 @@
     keys.select = {
       X = ["extend_line_up" "extend_to_line_bounds"];
     };
+
+    keys.insert = {
+      "C-left" = ["move_prev_word_start"];
+      "C-right" = ["move_next_word_start"];
+    };
   };
 
   programs.helix.languages = {

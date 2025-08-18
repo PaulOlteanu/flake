@@ -15,13 +15,14 @@
     };
 
     wezterm = {
-      url = "github:wez/wezterm/9b2937b?dir=nix";
+      # url = "github:wez/wezterm/9b2937b?dir=nix";
+      url = "github:wez/wezterm/c7f4b08?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.rust-overlay.follows = "rust-overlay";
     };
 
     helix = {
-      url = "github:helix-editor/helix/7275b7f";
+      url = "github:helix-editor/helix/2ee11a0a";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -132,6 +133,9 @@
           modules = [
             ./home/common.nix
             ./home/cloudflare.nix
+            {
+              nixpkgs.overlays = overlays;
+            }
           ];
 
           extraSpecialArgs = {

@@ -14,22 +14,12 @@
   modules.git.enable = true;
   modules.git.email = "polteanu@cloudflare.com";
 
-  # programs.fish.shellInit = ''
-  #   fish_add_path /home/paul/bin
-  #   fish_add_path /home/paul/.cargo/bin
-  #   fish_add_path /home/paul/.local/bin
-  #   fish_add_path /home/paul/.local/share/coursier/bin
-  #   fish_add_path /home/paul/.krew/bin
-  #   fish_add_path /home/paul/go/bin
-  #   fish_add_path /home/paul/.yarn/bin
-  #   fish_add_path /usr/local/cuda-12.6/bin/
+  modules.jj.enable = true;
+  modules.jj.email = "polteanu@cloudflare.com";
 
-  #   mise activate fish | source
-  # '';
-
-  programs.fish.shellAliases = {
-    "docker-compose" = "docker compose";
-  };
+  programs.fish.shellInit = ''
+    mise activate fish | source
+  '';
 
   # TODO: Configure through home manager
   programs.neovim.enable = true;
