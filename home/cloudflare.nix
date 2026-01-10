@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  nixpkgs.overlays = [ (self: super: { utillinux = super.util-linux; })];
+  nixpkgs.overlays = [(self: super: {utillinux = super.util-linux;})];
 
   home.username = "polteanu";
   home.homeDirectory = "/home/polteanu";
@@ -18,6 +18,7 @@
   modules.jj.email = "polteanu@cloudflare.com";
 
   programs.fish.shellInit = ''
+    bind alt-backspace backward-kill-word
     mise activate fish | source
   '';
 

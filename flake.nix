@@ -22,7 +22,7 @@
     };
 
     helix = {
-      url = "github:helix-editor/helix/2ee11a0a";
+      url = "github:helix-editor/helix/f518026e3c850f444fdce649580eba340eef11b5";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

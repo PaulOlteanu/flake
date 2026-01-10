@@ -124,6 +124,7 @@
     ];
 
     language-server = {
+      rust-analyzer.timeout = 120;
       rust-analyzer.config.check.command = "clippy";
 
       pyright.config.python.analysis.typeCheckingMode = "basic";

@@ -26,8 +26,7 @@ in {
       ui = {
         default-command = "status";
         pager = "less -FRX";
-        diff.format = "git";
-        diff.tool = ["difft" "--color=always" "$left" "$right"];
+        diff-formatter = ["difft" "--color=always" "$left" "$right"];
         editor = "hx";
       };
 
