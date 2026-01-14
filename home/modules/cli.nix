@@ -39,6 +39,7 @@
     settings = {
       enter_accept = false;
       smart_sort = true;
+      exit_mode = "return-query";
     };
   };
 
