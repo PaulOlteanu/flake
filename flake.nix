@@ -15,7 +15,6 @@
     };
 
     wezterm = {
-      # url = "github:wez/wezterm/9b2937b?dir=nix";
       url = "github:wez/wezterm/c7f4b08?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.rust-overlay.follows = "rust-overlay";
@@ -27,7 +26,12 @@
     };
 
     niri-flake = {
-      url = "github:sodiboo/niri-flake";
+      url = "github:sodiboo/niri-flake/a789aa1512a9157d5d3392b27e60621fd0d83438";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    jj-starship = {
+      url = "github:dmmulroy/jj-starship";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -36,11 +40,13 @@
     nixpkgs,
     home-manager,
     niri-flake,
+    jj-starship,
     ...
   } @ inputs: let
     overlays = [
       (_: prev: {wezterm = inputs.wezterm.packages.${prev.system}.wezterm;})
       (_: prev: {helix = inputs.helix.packages.${prev.system}.helix;})
+      jj-starship.overlays.default
     ];
   in {
     homeConfigurations = {
