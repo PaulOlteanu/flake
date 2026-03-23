@@ -63,8 +63,10 @@
     };
 
     keys.insert = {
-      "C-left" = ["move_prev_word_start"];
-      "C-right" = ["move_next_word_start"];
+      "C-left" = "move_prev_word_start";
+      "C-right" = "move_next_word_start";
+      "C-up" = "move_line_up";
+      "C-down" = "move_line_down";
     };
   };
 

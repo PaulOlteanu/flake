@@ -20,6 +20,7 @@
   programs.jq.enable = true;
   programs.zoxide.enable = true;
   programs.difftastic.enable = true;
+  programs.mergiraf.enable = true;
 
   programs.tealdeer.enable = true;
   programs.bottom.enable = true;

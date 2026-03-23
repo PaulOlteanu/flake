@@ -16,7 +16,13 @@
   modules.git.enable = true;
   modules.git.email = "p.a.olteanu@gmail.com";
 
-  # programs.fish.shellInit = ''
+  modules.jj.enable = true;
+  modules.jj.email = "p.a.olteanu@gmail.com";
+
+  programs.mise.enable = true;
+  programs.mise.enableFishIntegration = true;
+
+  programs.fish.shellInit = ''
   #   fish_add_path /home/paul/bin
   #   fish_add_path /home/paul/.cargo/bin
   #   fish_add_path /home/paul/.local/bin
@@ -26,8 +32,8 @@
   #   fish_add_path /home/paul/.yarn/bin
   #   fish_add_path /usr/local/cuda-12.6/bin/
 
-  #   mise activate fish | source
-  # '';
+    mise activate fish | source
+  '';
 
   # TODO: Configure through home manager
   programs.neovim.enable = true;
@@ -40,11 +46,17 @@
   home.packages = with pkgs; [
     # oci-cli
     kubectl
+    postgresql
+    pgcli
 
     nil
     alejandra
 
     taplo
+
+    nodePackages.prettier
+    typescript-language-server
+    svelte-language-server
   ];
 
   home.sessionVariables = {

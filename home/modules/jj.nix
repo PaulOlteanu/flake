@@ -47,7 +47,7 @@ in {
             label(if(current_working_copy, "working_copy"),
               concat(
                 separate(" ",
-                  pad_end(4, format_short_change_id_with_hidden_and_divergent_info(self)),
+                  pad_end(4, format_short_change_id_with_change_offset(self)),
                   if(empty, label("empty", "(empty)")),
                   if(description,
                     description.first_line(),
@@ -56,7 +56,7 @@ in {
                   bookmarks,
                   tags,
                   working_copies,
-                  if(git_head, label("git_head", "HEAD")),
+                  if(self.contained_in('first_parent(@)'), label("git_head", "HEAD")),
                   if(conflict, label("conflict", "conflict")),
                   if(config("ui.show-cryptographic-signatures").as_boolean(),
                     format_short_cryptographic_signature(signature)),
