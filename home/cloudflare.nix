@@ -24,6 +24,8 @@
 
   # TODO: Configure through home manager
   programs.neovim.enable = true;
+  programs.neovim.withRuby = false;
+  programs.neovim.withPython3 = false;
 
   programs.ruff.enable = true;
   programs.ruff.settings = {};
@@ -34,24 +36,12 @@
   };
 
   home.packages = with pkgs; [
-    # kubectl
-    # kubectx
-
-    # uv
-    # pyright
-    # ruff-lsp
-
-    # nodePackages.typescript-language-server
-    # nodePackages.prettier
-
     nil
     alejandra
 
     taplo
-
-    # ktlint
-
-    # protobuf_25
+    yaml-language-server
+    yamlfmt
   ];
 
   home.sessionVariables = {

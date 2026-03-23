@@ -115,14 +115,6 @@
           args = ["-"];
         };
       }
-
-      {
-        name = "toml";
-        indent = {
-          tab-width = 4;
-          unit = "  ";
-        };
-      }
     ];
 
     language-server = {

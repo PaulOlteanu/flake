@@ -28,6 +28,8 @@
 
   # TODO: Configure through home manager
   programs.neovim.enable = true;
+  programs.neovim.withRuby = false;
+  programs.neovim.withPython3 = false;
 
   programs.ruff.enable = true;
   programs.ruff.settings = {};

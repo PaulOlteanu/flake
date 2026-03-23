@@ -37,6 +37,8 @@
 
   # TODO: Configure through home manager
   programs.neovim.enable = true;
+  programs.neovim.withRuby = false;
+  programs.neovim.withPython3 = false;
 
   programs.direnv.enable = true;
   programs.direnv.config = {

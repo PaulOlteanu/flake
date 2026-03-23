@@ -20,12 +20,15 @@
   programs.jq.enable = true;
   programs.zoxide.enable = true;
   programs.difftastic.enable = true;
-  programs.mergiraf.enable = true;
-
   programs.tealdeer.enable = true;
   programs.bottom.enable = true;
 
+  programs.mergiraf.enable = true;
+  programs.mergiraf.enableGitIntegration = true;
+  programs.mergiraf.enableJujutsuIntegration = true;
+
   programs.yazi.enable = true;
+  programs.yazi.shellWrapperName = "y";
 
   programs.fzf = {
     enable = true;

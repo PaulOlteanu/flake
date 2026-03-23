@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: let
   cfg = config.modules.git;
@@ -18,10 +17,11 @@ in {
 
     programs.git = {
       enable = true;
+      signing.format = null;
       ignores = [
         ".helix/"
+        ".zed/"
       ];
-
 
       settings = {
         user.name = "Paul Olteanu";
